@@ -1,1 +1,9 @@
-<z-todo-item [data]="item" *ngFor="let item of data"></z-todo-item>
+<z-todo-item
+  class="c-todo-item"
+  *ngFor="let item of data"
+  [data]="item"
+  (remove)="remove.emit($event)"
+  (update)="update.emit($event)">
+</z-todo-item>
+
+<button type="button" (click)="add.emit('foobar')">add</button>

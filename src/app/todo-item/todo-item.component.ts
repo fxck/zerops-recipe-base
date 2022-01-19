@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output
+} from '@angular/core';
 import { Todo } from '../todos.model';
 
 @Component({
@@ -10,4 +16,13 @@ import { Todo } from '../todos.model';
 export class TodoItemComponent {
   @Input()
   data: Todo;
+
+  @Output()
+  remove = new EventEmitter<string>();
+
+  @Output()
+  update = new EventEmitter<{
+    id: string;
+    data: Partial<Todo>;
+  }>();
 }

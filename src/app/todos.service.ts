@@ -5,8 +5,8 @@ import { Todo } from './todos.model';
 
 @Injectable({ providedIn: 'root' })
 export class TodosServices {
-  private _entity = 'todos';
-  private _endpoint = `${environment.apiEndpoint}/${this._entity}`;
+
+  private _endpoint = `${environment.apiEndpoint}/todos`;
 
   constructor(private _httpClient: HttpClient) {}
 
@@ -15,7 +15,7 @@ export class TodosServices {
   }
 
   update$(id: string, data: Partial<Todo>) {
-    return this._httpClient.patch(
+    return this._httpClient.patch<Todo>(
       `${this._endpoint}/${id}`,
       data
     );
@@ -26,7 +26,7 @@ export class TodosServices {
   }
 
   add$(data: Partial<Todo>) {
-    return this._httpClient.post(`${this._endpoint}`, data);
+    return this._httpClient.post<Todo>(`${this._endpoint}`, data);
   }
 
 }

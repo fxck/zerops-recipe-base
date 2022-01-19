@@ -1,1 +1,28 @@
-{{ data.text }} | {{ data.completed }}
+<input
+  #textInputRef
+  type="text"
+  [value]="data.text"
+  (change)="update.emit({
+    id: data.id,
+    data: {
+      text: textInputRef.value
+    }
+  })"
+/>
+
+<input
+  type="checkbox"
+  [checked]="data.completed"
+  (change)="update.emit({
+    id: data.id,
+    data: {
+      completed: !data.completed
+    }
+  })"
+/>
+
+<button
+  type="button"
+  (click)="remove.emit(data.id)">
+  remove
+</button>

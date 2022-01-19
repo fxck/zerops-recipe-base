@@ -1,5 +1,10 @@
-<h1>{{ data?.name }}</h1>
+<h1>{{ recipeInfo?.name }}</h1>
 
-<pre>{{ data?.repositories | json }}</pre>
+<pre>{{ recipeInfo?.repositories | json }}</pre>
 
-<z-todos [data]="todos"></z-todos>
+<z-todos
+  (add)="addTodo($event)"
+  (remove)="deleteTodo($event)"
+  (update)="updateTodo($event.id, $event.data)"
+  [data]="todos">
+</z-todos>
