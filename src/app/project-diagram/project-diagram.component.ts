@@ -1,12 +1,12 @@
 import {
-  AfterViewInit,
+  // AfterViewInit,
   ChangeDetectionStrategy,
   Component,
-  ElementRef,
+  // ElementRef,
   Input,
-  ViewChild
+  // ViewChild
 } from '@angular/core';
-import * as mermaid from 'mermaid';
+// import * as mermaid from 'mermaid';
 
 @Component({
   selector: 'z-project-diagram',
@@ -16,7 +16,25 @@ import * as mermaid from 'mermaid';
 })
 export class ProjectDiagramComponent/*  implements AfterViewInit  */ {
   @Input()
-  services: any[];
+  set services(value: any[] | undefined) {
+    if (value) {
+      this.publicUrls = value.reduce((arr, itm) => {
+        if (itm.url) {
+          arr.push(itm.url);
+        }
+        return arr;
+      }, []);
+    }
+
+    this._services = value;
+  }
+
+  get services() {
+    return this._services;
+  }
+
+  publicUrls = [];
+  private _services?: any[] | undefined;
 
   // @ViewChild('mermaidTargetRef')
   // mermaidTargetRef: ElementRef<HTMLElement>;

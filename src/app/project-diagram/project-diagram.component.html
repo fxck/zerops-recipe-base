@@ -1,2 +1,28 @@
 <!-- <div #mermaidTargetRef></div> -->
-<pre>{{ services | json }}</pre>
+
+
+<div class="__diagram">
+  <div>
+    <pre>{{ publicUrls | json }}</pre>
+  </div>
+
+  <div>
+    <h4>➡️ core ➡️</h4>
+  </div>
+
+  <div>
+    <h4>2x l7 balancer</h4>
+
+    <pre *ngFor="let service of services">
+<ng-template [ngIf]="service.url">
+{{ service.url }} ➡️ {{ service.hostname }}:{{ service.port }}
+</ng-template>
+    </pre>
+
+  </div>
+
+  <div>
+    <pre *ngFor="let service of services">{{ service | json }}</pre>
+  </div>
+
+</div>

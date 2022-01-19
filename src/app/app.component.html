@@ -2,7 +2,7 @@
 
 Knowledge base: <a [href]="recipeInfo?.knowledgeBaseLink" target="_blank">{{ recipeInfo?.knowledgeBaseLink }}</a>
 
-<z-project-diagram [services]="recipeInfo.services"></z-project-diagram>
+<z-project-diagram [services]="recipeInfo?.services"></z-project-diagram>
 
 <z-todos
   (add)="addTodo($event)"
