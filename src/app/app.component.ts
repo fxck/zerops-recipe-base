@@ -1,3 +1,4 @@
+import { CoreEnvironment } from '@angular/compiler/src/compiler_facade_interface';
 import { Component } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Todo } from './todos.model';
@@ -10,7 +11,12 @@ import { TodosServices } from './todos.service';
 })
 export class AppComponent {
 
-  recipeInfo = JSON.parse(environment.recipeConfig);
+  recipeInfo: {
+    name: string;
+    knowledgeBaseLink: string;
+    repositories: { [key: string]: string; };
+    services: any[];
+  };
 
   todos: Todo[];
 
@@ -18,6 +24,13 @@ export class AppComponent {
     this._todosService
       .findAll$()
       .subscribe((todos) => this.todos = todos)
+
+    try {
+      this.recipeInfo = JSON.parse(environment.recipeConfig);
+    } catch (error) {
+      console.warn(error);
+    }
+
   }
 
   addTodo(text: string) {
