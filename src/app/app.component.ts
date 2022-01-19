@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { environment } from 'src/environments/environment';
+import { Todo } from './todos.model';
+import { TodosServices } from './todos.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'angular-base-zerops-todo-app';
+
+  data = JSON.parse(environment.configuration);
+  todos: Todo[];
+
+  constructor(private _todosService: TodosServices) {
+    this._todosService
+      .findAll$()
+      .subscribe((todos) => this.todos = todos)
+  }
+
 }
