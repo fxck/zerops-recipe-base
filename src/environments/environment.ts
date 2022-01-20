@@ -20,13 +20,13 @@ export const environment = {
       "url": "https://api-20109-5000.app.zerops.io",
       "repository": "https://github.com/fxck/todos-backend-nestjs",
       "type": "Node.js",
-      "containers": 1,
+      "containers": 3,
       "category": "runtime"
     },
     {
       "hostname": "db",
       "port": 27017,
-      "type": "Node.js",
+      "type": "MongoDB",
       "containers": 1,
       "category": "database"
     }

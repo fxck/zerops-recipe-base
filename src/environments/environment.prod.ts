@@ -20,7 +20,7 @@ export const environment = {
       "url": "https://api-20109-5000.app.zerops.io",
       "repository": "https://github.com/fxck/todos-backend-nestjs",
       "type": "Node.js",
-      "containers": 1,
+      "containers": 3,
       "category": "runtime"
     },
     {

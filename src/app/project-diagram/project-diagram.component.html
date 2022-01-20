@@ -1,28 +1,61 @@
 <!-- <div #mermaidTargetRef></div> -->
 
+<div class="__grid">
 
-<div class="__diagram">
   <div>
-    <pre>{{ publicUrls | json }}</pre>
+    <div class="__urls-wrap" #publicUrlsRef>
+      <h5 *ngFor="let item of publicUrls">{{ item }}</h5>
+    </div>
   </div>
 
-  <div>
-    <h4>➡️ core ➡️</h4>
-  </div>
+  <div class="__project">
+    <div>
+      <div #coreRef class="__core-wrap">
+        <h4>core service</h4>
+      </div>
+    </div>
 
-  <div>
-    <h4>2x l7 balancer</h4>
+    <div>
+      <div class="__balancer-wrap">
 
-    <pre *ngFor="let service of services">
-<ng-template [ngIf]="service.url">
-{{ service.url }} ➡️ {{ service.hostname }}:{{ service.port }}
-</ng-template>
-    </pre>
+        <div #balancerOneRef class="__balancer">
+          <h4>routing balancer</h4>
+        </div>
 
-  </div>
+        <div #balancerTwoRef class="__balancer">
+          <h4>routing balancer</h4>
+        </div>
 
-  <div>
-    <pre *ngFor="let service of services">{{ service | json }}</pre>
+      </div>
+    </div>
+
+    <div>
+      <div class="__public-url-wrap">
+        <div
+          class="__public-url"
+          *ngFor="let url of publicUrls">
+          <span #publicUrlRef [attr.data-url]="url">{{ url }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="__service-wrap">
+        <div
+          class="__service"
+          #serviceRef
+          [attr.data-url]="service.url"
+          *ngFor="let service of services">
+          {{ service.hostname }}:{{ service.port }}
+          <div
+            class="__container"
+            *ngFor="let item of [].constructor(service.containers)">
+            <h6>{{ service.type }}</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 
 </div>
