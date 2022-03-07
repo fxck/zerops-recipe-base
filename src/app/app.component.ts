@@ -1,4 +1,3 @@
-import { CoreEnvironment } from '@angular/compiler/src/compiler_facade_interface';
 import { Component } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Todo } from './todos.model';
@@ -12,6 +11,7 @@ import { TodosServices } from './todos.service';
 export class AppComponent {
 
   recipeInfo: {
+    intro: string;
     description: string;
     knowledgeBaseLink: string;
     repositories: { [key: string]: string; };

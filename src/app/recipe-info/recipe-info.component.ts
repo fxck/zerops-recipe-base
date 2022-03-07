@@ -5,7 +5,7 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'z-recipe-info',
+  selector: 'zs-recipe-info',
   templateUrl: './recipe-info.component.html',
   styleUrls: [ './recipe-info.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush

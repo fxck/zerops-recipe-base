@@ -38,7 +38,18 @@ $_itemMinHeight: $_bu;
 }
 
 .zs-todos {
+  background: #f2faf8;
+  border-radius: 8px;
+}
 
+.zs-todo-add {
+  display: block;
+  width: 100%;
+  line-height: $_itemMinHeight;
+  padding: 4px;
+  border: 2px solid #ccc;
+  border-radius: 2px;
+  margin-bottom: $_bu;
 }
 
 .zs-todo-item {
