@@ -8,12 +8,15 @@ import {
 import { Todo } from '../todos.model';
 
 @Component({
-  selector: 'z-todos',
+  selector: 'zs-todos',
   templateUrl: './todos.component.html',
   styleUrls: [ './todos.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TodosComponent {
+
+  addValue = '';
+
   @Input()
   data: Todo[];
 
@@ -28,4 +31,5 @@ export class TodosComponent {
     id: string;
     data: Partial<Todo>;
   }>();
+
 }

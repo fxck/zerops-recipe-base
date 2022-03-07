@@ -1,12 +1,23 @@
-<h1>{{ recipeInfo?.name }}</h1>
+<div class="zs-recipe">
 
-Knowledge base: <a [href]="recipeInfo?.knowledgeBaseLink" target="_blank">{{ recipeInfo?.knowledgeBaseLink }}</a>
+  <div class="zs-recipe-context">
 
-<z-project-diagram [services]="recipeInfo?.services"></z-project-diagram>
+    <zs-recipe-info
+      [intro]="'👏👏👏'"
+      [desc]="recipeInfo?.description">
+    </zs-recipe-info>
 
-<z-todos
-  (add)="addTodo($event)"
-  (remove)="deleteTodo($event)"
-  (update)="updateTodo($event.id, $event.data)"
-  [data]="todos">
-</z-todos>
+    <zs-todos
+      (add)="addTodo($event)"
+      (remove)="deleteTodo($event)"
+      (update)="updateTodo($event.id, $event.data)"
+      [data]="todos">
+    </zs-todos>
+
+  </div>
+
+  <div class="zs-recipe-diagram">
+    <z-project-diagram [services]="recipeInfo?.services"></z-project-diagram>
+  </div>
+
+</div>

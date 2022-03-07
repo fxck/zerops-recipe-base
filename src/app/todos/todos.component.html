@@ -1,9 +1,18 @@
-<z-todo-item
-  class="c-todo-item"
-  *ngFor="let item of data"
-  [data]="item"
-  (remove)="remove.emit($event)"
-  (update)="update.emit($event)">
-</z-todo-item>
+<div class="zs-todos">
 
-<button type="button" (click)="add.emit('foobar')">add</button>
+  <input
+    class="zs-add-input"
+    type="text"
+    [placeholder]="'Add item? Type and press enter.'"
+    [(ngModel)]="addValue"
+    (keyup.enter)="add.emit(addValue); addValue = '';"
+  />
+
+  <zs-todo-item
+    *ngFor="let item of data"
+    [data]="item"
+    (remove)="remove.emit($event)"
+    (update)="update.emit($event)">
+  </zs-todo-item>
+
+</div>

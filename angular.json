@@ -18,7 +18,7 @@
       },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "app",
+      "prefix": "zr",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -37,7 +37,7 @@
               "src/styles.scss"
             ],
             "scripts": [
-              "src/project-diagram.js"
+              "node_modules/@zerops/project-diagram/index.js"
             ]
           },
           "configurations": {

@@ -1,28 +1,40 @@
-<input
-  #textInputRef
-  type="text"
-  [value]="data.text"
-  (change)="update.emit({
-    id: data.id,
-    data: {
-      text: textInputRef.value
-    }
-  })"
-/>
+<div class="zs-todo-item" [class.is-complete]="data.completed">
 
-<input
-  type="checkbox"
-  [checked]="data.completed"
-  (change)="update.emit({
-    id: data.id,
-    data: {
-      completed: !data.completed
-    }
-  })"
-/>
+  <div
+    title="Double click to edit"
+    *ngIf="editing === false"
+    (dblclick)="editing = true"
+    class="zs-todo-text">
+    {{ data.text }}
+  </div>
 
-<button
-  type="button"
-  (click)="remove.emit(data.id)">
-  remove
-</button>
+  <input
+    *ngIf="editing === true"
+    #textInputRef
+    class="zs-todo-item-edit"
+    [value]="data.text"
+    (blur)="onUpdated(data.id, textInputRef.value)"
+    (keyup.enter)="onUpdated(data.id, textInputRef.value)"
+    (keyup.escape)="editing = false"
+  />
+
+  <input
+    class="zs-todo-item-check"
+    type="checkbox"
+    [checked]="data.completed"
+    (change)="update.emit({
+      id: data.id,
+      data: {
+        completed: !data.completed
+      }
+    }); editing = false;"
+  />
+
+  <button
+    type="button"
+    class="zs-todo-item-remove"
+    (click)="remove.emit(data.id)">
+    ❌
+  </button>
+
+</div>

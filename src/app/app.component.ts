@@ -5,14 +5,14 @@ import { Todo } from './todos.model';
 import { TodosServices } from './todos.service';
 
 @Component({
-  selector: 'app-root',
+  selector: 'zr-app',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
 
   recipeInfo: {
-    name: string;
+    description: string;
     knowledgeBaseLink: string;
     repositories: { [key: string]: string; };
     services: any[];
@@ -21,15 +21,12 @@ export class AppComponent {
   todos: Todo[];
 
   constructor(private _todosService: TodosServices) {
+
     this._todosService
       .findAll$()
       .subscribe((todos) => this.todos = todos)
 
-    try {
-      this.recipeInfo = JSON.parse(environment.recipeConfig);
-    } catch (error) {
-      console.warn(error);
-    }
+    this.recipeInfo = JSON.parse(environment.recipeConfig);
 
   }
 
