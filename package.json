@@ -22,7 +22,8 @@
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4",
     "@zerops/zestratcss": "0.0.7",
-    "@zerops/zestrat-angular": "0.0.1",
+    "@zerops/zestrat-angular": "0.0.7",
+    "@zerops/zestrat-models": "0.0.7",
     "@zerops/project-diagram": "0.0.4"
   },
   "devDependencies": {

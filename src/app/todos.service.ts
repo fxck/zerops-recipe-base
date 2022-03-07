@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { Todo } from './todos.model';
+import { Todo } from '@zerops/zestrat-models';
 
 @Injectable({ providedIn: 'root' })
-export class TodosServices {
+export class TodosService {
 
   private _endpoint = `${environment.apiEndpoint}/todos`;
 

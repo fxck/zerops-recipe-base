@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Todo } from './todos.model';
+import { Todo, RecipeInfo } from '@zerops/zestrat-models';
 import { TodosServices } from './todos.service';
 
 @Component({
@@ -10,24 +10,11 @@ import { TodosServices } from './todos.service';
 })
 export class AppComponent {
 
-  recipeInfo: {
-    intro: string;
-    description: string;
-    knowledgeBaseLink: string;
-    repositories: { [key: string]: string; };
-    services: any[];
-  };
-
+  recipeInfo: RecipeInfo = JSON.parse(environment.recipeConfig);
   todos: Todo[];
 
   constructor(private _todosService: TodosServices) {
-
-    this._todosService
-      .findAll$()
-      .subscribe((todos) => this.todos = todos)
-
-    this.recipeInfo = JSON.parse(environment.recipeConfig);
-
+    this.loadTodos();
   }
 
   addTodo(text: string) {
@@ -52,6 +39,12 @@ export class AppComponent {
         arr.push(itm.id === id ? { ...itm, ...data } : itm);
         return arr;
       }, [] as Todo[]));
+  }
+
+  loadTodos() {
+    this._todosService
+      .findAll$()
+      .subscribe((todos) => this.todos = todos)
   }
 
 }
