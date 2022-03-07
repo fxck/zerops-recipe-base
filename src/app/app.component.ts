@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Todo, RecipeInfo } from '@zerops/zestrat-models';
-import { TodosServices } from './todos.service';
+import { TodosService } from './todos.service';
 
 @Component({
   selector: 'zr-app',
@@ -13,7 +13,7 @@ export class AppComponent {
   recipeInfo: RecipeInfo = JSON.parse(environment.recipeConfig);
   todos: Todo[];
 
-  constructor(private _todosService: TodosServices) {
+  constructor(private _todosService: TodosService) {
     this.loadTodos();
   }
 
