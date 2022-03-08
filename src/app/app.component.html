@@ -3,8 +3,8 @@
   <div class="zs-recipe-context">
 
     <zs-recipe-info
-      [intro]="recipeInfo?.intro"
-      [desc]="recipeInfo?.description">
+      [intro]="recipe?.intro"
+      [desc]="recipe?.description">
     </zs-recipe-info>
 
     <zs-todos
@@ -17,7 +17,7 @@
   </div>
 
   <div class="zs-recipe-diagram">
-    <z-project-diagram [services]="recipeInfo?.services"></z-project-diagram>
+    <z-project-diagram [services]="recipe?.services"></z-project-diagram>
   </div>
 
 </div>
